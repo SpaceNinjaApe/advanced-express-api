@@ -1,14 +1,15 @@
 # advanced-express-api
 Example how to add some advanced mechanics to an expressjs-api
 
-###### Install
-
+## Install
+```
 npm install
-
-###### Run
-
+```
+## Run
+```
 npm run dev
-
-###### Build
-
+```
+## Build
+```
 Webpack build not yet added
+```

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "clear && ts-node-dev --respawn --transpile-only --clear index.ts"
+    "dev": "clear && ts-node-dev -r tsconfig-paths/register index.ts --respawn --transpile-only --clean index.ts"
   },
   "author": "SpaceNinjaApe",
   "license": "ISC",
@@ -16,5 +16,8 @@
     "reflect-metadata": "^0.1.13",
     "ts-node-dev": "^1.0.0-pre.56",
     "typescript": "^3.9.7"
+  },
+  "devDependencies": {
+    "tsconfig-paths": "^3.9.0"
   }
 }

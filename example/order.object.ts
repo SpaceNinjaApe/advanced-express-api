@@ -1,10 +1,12 @@
-import { requestAttribute } from '../src/request-validator/request-description.decorator';
+import { propertyDescription } from "src/property-validator/property-description.decorator";
+import { Product } from './product.object';
+
 export class OrderRequest {
 
-    @requestAttribute(true)
-    public product: string;
+    @propertyDescription(true)
+    public product: Product;
     
-    @requestAttribute(false)
+    @propertyDescription(false)
     public amount: number;
 
 }

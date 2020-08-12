@@ -9,7 +9,7 @@ export function propertyDescription(isPropertyEssential?:boolean): any {
 
 
     return function (target : Object, key : string) {
-        let type: string = Reflect.getMetadata("design:type", target, key).name;
-        PropertValidatorService.getInstance().createPropertyDescription(target, key, type, isPropertyEssential)
+        let type = Reflect.getMetadata("design:type", target, key);
+        PropertValidatorService.getInstance().createPropertyDescription(target, key, type.prototype, isPropertyEssential)
     }
 }

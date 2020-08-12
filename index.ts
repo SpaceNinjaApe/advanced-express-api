@@ -1,13 +1,13 @@
-import { OrderRequest } from "./example/order.object";
-import { RestMethod } from "./src/rest-handler/rest-method.enum";
-import { RestHandlerService } from './src/rest-handler/res-handler.service';
+import { OrderRequest } from "example/order.object";
+import { RestMethod } from "src/rest-handler/rest-method.enum";
+import { RestHandlerService } from 'src/rest-handler/res-handler.service';
 import { Response, Request } from "express";
-
+import { PropertValidatorService } from 'src/property-validator/property-validator.service';
 RestHandlerService.getInstance().setPermissionHook(
     (req,res,data) => {
         return new Promise<boolean>((resolve) => {
             // do some permission checking here
-            resolve(false)
+            resolve(true)
         })
     }
 )
@@ -22,3 +22,11 @@ RestHandlerService.getInstance().registerRestHandler(
     [], // no permission needed
     OrderRequest.prototype
 )
+
+
+// PropertValidatorService.getInstance().objectDescriptions.forEach((objdesc) => {
+//     console.log(objdesc.getTypeName())
+//     objdesc.propertyDescriptions.forEach((propDesc) => {
+//         console.log("=", propDesc.propertyName, propDesc.description.getTypeName())
+//     })
+// })

@@ -1,8 +1,8 @@
 import Express, { Request, Response } from 'express';
 import BodyParser from 'body-parser';
 import { RestMethod } from './rest-method.enum';
-import { RequestValidatorService } from '../request-validator/request-validator.service';
-import { RequestValidatorError } from '../request-validator/request-validator.error';
+import { PropertValidatorService } from 'src/property-validator/property-validator.service';
+import { PropertyDescriptionError } from 'src/property-validator/property-description.error';
 
 export class RestHandlerService {
 
@@ -57,19 +57,19 @@ export class RestHandlerService {
             async (req,res) => {
                 let data: any;
                 if (restMethod !== RestMethod.GET && expectedDataType !== undefined) {
-                    data = this.readDataIntoObject(req.body, expectedDataType);
                     try {
                         if (this.permissionHook && await this.permissionHook(req,res, neededPermission) || this.permissionHook === undefined && true) {
-                            RequestValidatorService.getInstance().validateRequest(data);
+                            data = PropertValidatorService.getInstance().createAndValidate(req.body, expectedDataType)
                             cb(req,res,data);
                         } else {
                             res.send(401);
                         }
                     } catch (error) {
-                        if (error instanceof RequestValidatorError) {
+                        if (error instanceof PropertyDescriptionError) {
                             res.send(error.message);
                         } else {
                             res.send(200);
+                            console.log(error);
                             console.warn('Uncatched error from CB');
                         }
                     }
@@ -79,16 +79,4 @@ export class RestHandlerService {
             }    
         )
     }
-
-    private readDataIntoObject<t>(data: any, exptectedPrototype: Object): t {
-
-        let tempObject:any = Object.create(exptectedPrototype);
-    
-        for(let key in data) {
-            tempObject[key] = data[key];
-        }
-        return tempObject;
-    }
-
-
 }

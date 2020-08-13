@@ -23,6 +23,10 @@ RestHandlerService.getInstance().registerRestHandler(
     OrderRequest.prototype
 )
 
+let test: any = "string";
+
+console.log(test instanceof String === false);
+
 
 // PropertValidatorService.getInstance().objectDescriptions.forEach((objdesc) => {
 //     console.log(objdesc.getTypeName())

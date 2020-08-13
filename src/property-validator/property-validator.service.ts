@@ -80,7 +80,10 @@ export class PropertValidatorService {
         }
     }
 
-
+    /**
+     * Creates an objectdescriptions, if it does not exists.
+     * @param type objectType that should be described.
+     */
     createObjectDescription(type: Object) {
         let existingObjectDescription: ObjectDescription | undefined;
         existingObjectDescription = this.findObjectDescriptionFor(type.constructor.name);
@@ -93,9 +96,10 @@ export class PropertValidatorService {
 
 
     /**
-     * 
-     * @param obj 
-     * @param expectedType 
+     * Creates an instance of the expected type, fills the properties and validates them. Throws error if anonymous object
+     * does not match the expected type. Returns the initilized Object.
+     * @param obj Anonymous object.
+     * @param expectedType Expected type of the anonymous object.
      */
     public createAndValidate<t>(obj: any, expectedType: Object): t {
         let initilized: any;
@@ -150,6 +154,12 @@ export class PropertValidatorService {
     
     }
 
+    /**
+     * Checks an given anonymous obj against the given description. Throws error if the definition does not match the object.
+     * @param obj Anonymous Object
+     * @param objDescription  Expected type
+     * @param propertyName Name of the property this object will be stored in
+     */
     private isValidObject(obj: any, objDescription: ObjectDescription, propertyName?: string): boolean {
 
         /* get string representation of obj, depending on complexitivity */

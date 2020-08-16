@@ -142,7 +142,7 @@ export class PropertValidatorService {
      */
     private isValidProperty(property: any, propertyDescription: PropertyDescription): boolean {
         /* Throw error if undefined but expected to be defined*/
-        if (property === undefined && propertyDescription.essential === false) { 
+        if (property === undefined && propertyDescription.essential === true) { 
             throw new PropertyDescriptionError(
                 PropertyDescriptionErrorType.property_unexpected_undefined,
                 `Expected ${propertyDescription.propertyName} to be defined but was undefined`

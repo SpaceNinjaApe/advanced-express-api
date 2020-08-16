@@ -1,5 +1,6 @@
-import { propertyDescription } from "src/property-validator/property-description.decorator";
+
 import { Product } from './product.object';
+import { propertyDescription } from '../src/property-validator/property-description.decorator';
 
 export class OrderRequest {
 

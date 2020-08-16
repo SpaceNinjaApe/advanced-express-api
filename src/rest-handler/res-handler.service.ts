@@ -1,8 +1,9 @@
 import Express, { Request, Response } from 'express';
 import BodyParser from 'body-parser';
 import { RestMethod } from './rest-method.enum';
-import { PropertValidatorService } from 'src/property-validator/property-validator.service';
-import { PropertyDescriptionError } from 'src/property-validator/property-description.error';
+import { PropertValidatorService } from '../property-validator/property-validator.service';
+import { PropertyDescriptionError } from '../property-validator/property-description.error';
+
 
 export class RestHandlerService {
 

@@ -2,7 +2,6 @@ import { OrderRequest } from "example/order.object";
 import { RestMethod } from "src/rest-handler/rest-method.enum";
 import { RestHandlerService } from 'src/rest-handler/res-handler.service';
 import { Response, Request } from "express";
-import { PropertValidatorService } from 'src/property-validator/property-validator.service';
 RestHandlerService.getInstance().setPermissionHook(
     (req,res,data) => {
         return new Promise<boolean>((resolve) => {

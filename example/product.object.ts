@@ -1,4 +1,4 @@
-import { propertyDescription } from "src/property-validator/property-description.decorator";
+import { propertyDescription } from '../src/property-validator/property-description.decorator';
 
 export class Product {
 

@@ -150,7 +150,11 @@ export class PropertValidatorService {
         }
 
 
-        return this.isValidObject(property, propertyDescription.description, propertyDescription.propertyName);
+        if (property !== undefined && propertyDescription.essential === false) {
+            return this.isValidObject(property, propertyDescription.description, propertyDescription.propertyName);
+        } else {
+            return true;
+        }
     
     }
 
